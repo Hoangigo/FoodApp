@@ -51,7 +51,7 @@ class _NewMessage extends State<NewMessage> {
               child: TextField(
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.white, // Background color of the TextField
+              fillColor: Colors.white,
               hintText: 'Enter your message',
               hintStyle: const TextStyle(
                   color: Colors.grey), // Style for the hint text

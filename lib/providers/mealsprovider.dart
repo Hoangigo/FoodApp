@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mealsapp/models/meal.dart';
 
-final mealsStreamProvider = StreamProvider.autoDispose<List<Meal>>((ref) {
+final mealsStreamProvider = StreamProvider<List<Meal>>((ref) {
   final firestore = FirebaseFirestore.instance;
   final collection = firestore.collection('meals');
 

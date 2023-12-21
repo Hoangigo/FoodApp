@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mealsapp/models/meal.dart';
-import 'package:mealsapp/screens/meal_details_screen.dart';
+import 'package:mealsapp/screens/add_recipe.dart';
 import 'package:mealsapp/widgets/meal_item.dart';
 
 class MealScreen extends StatelessWidget {
   const MealScreen({super.key, this.title, required this.meals});
   final String? title;
   final List<Meal> meals;
-  void selectMeal(BuildContext context, Meal meal) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (ctx) => MealDetailsScreen(
-          meal: meal,
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +52,20 @@ class MealScreen extends StatelessWidget {
             .copyWith(color: Theme.of(context).colorScheme.onBackground),
       )),
       body: content,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (BuildContext context) {
+              return const AddRecipe();
+            },
+          );
+        },
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

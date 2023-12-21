@@ -12,6 +12,26 @@ final categoriesProvider = StreamProvider.autoDispose<List<Category>>((ref) {
     }).toList();
   });
 });
+final selectedCategoriesProvider =
+    StateNotifierProvider<SelectedCategoriesNotifier, Set<String>>((ref) {
+  return SelectedCategoriesNotifier();
+});
+
+class SelectedCategoriesNotifier extends StateNotifier<Set<String>> {
+  SelectedCategoriesNotifier() : super(<String>{});
+
+  void setSelectedCategories(Set<String> selectedCategories) {
+    state = selectedCategories;
+  }
+
+  void addSelectedCategory(String category) {
+    state = {...state, category};
+  }
+
+  void removeSelectedCategory(String category) {
+    state = {...state}..remove(category);
+  }
+}
 
 class SelectedCategory extends StateNotifier<Category?> {
   SelectedCategory() : super(null);
