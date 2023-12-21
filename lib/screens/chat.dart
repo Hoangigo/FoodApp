@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mealsapp/controller/auth_controller.dart';
 import 'package:mealsapp/widgets/chat_message.dart';
 import 'package:mealsapp/widgets/new_message.dart';
 import 'package:mealsapp/providers/userProvider.dart';
@@ -39,7 +39,7 @@ class ChatScreen extends ConsumerWidget {
                   loading: () => const CircularProgressIndicator()),
               IconButton(
                   onPressed: () {
-                    FirebaseAuth.instance.signOut();
+                    AuthController().signOut();
                   },
                   icon: const Icon(Icons.exit_to_app))
             ],

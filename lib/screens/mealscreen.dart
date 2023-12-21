@@ -24,9 +24,6 @@ class MealScreen extends StatelessWidget {
         itemBuilder: (ctx, index) {
           return MealItem(
             meal: meals[index],
-            onSelectMeal: (meal) {
-              selectMeal(context, meal);
-            },
           );
         });
     if (meals.isEmpty) {

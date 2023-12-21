@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mealsapp/providers/filter_provider.dart';
 import 'package:mealsapp/providers/userProvider.dart';
+import 'package:mealsapp/screens/chat.dart';
+import 'package:mealsapp/screens/filter.dart';
+import 'package:mealsapp/screens/tabscreen.dart';
 
 class MainDrawer extends ConsumerWidget {
-  const MainDrawer({super.key, required this.onSelectScreen});
-  final void Function(String identifier) onSelectScreen;
+  const MainDrawer({super.key});
+  void setScreen(BuildContext context, String identifier) async {
+    Navigator.of(context).pop();
+    if (identifier == 'filters') {
+      await Navigator.of(context).push<Map<Filter, bool>>(
+          MaterialPageRoute(builder: (ctx) => const FiltersScreen()));
+    } else if (identifier == 'messages') {
+      await Navigator.of(context).push(MaterialPageRoute(
+          builder: (ctx) => const ChatScreen(
+                title: 'Messages',
+              )));
+    } else if (identifier == 'meals') {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (ctx) => const TabScreen()));
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -69,7 +87,7 @@ class MainDrawer extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.onBackground,
                       ),
                       onTap: () {
-                        onSelectScreen('meals');
+                        setScreen(context, 'meals');
                       },
                       title: Text(
                         'Meals',
@@ -84,7 +102,7 @@ class MainDrawer extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.onBackground,
                       ),
                       onTap: () {
-                        onSelectScreen('filters');
+                        setScreen(context, 'filters');
                       },
                       title: Text(
                         'Filters',
@@ -99,7 +117,7 @@ class MainDrawer extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.onBackground,
                       ),
                       onTap: () {
-                        onSelectScreen('messages');
+                        setScreen(context, 'messages');
                       },
                       title: Text(
                         'Messages',

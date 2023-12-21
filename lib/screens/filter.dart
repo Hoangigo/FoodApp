@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mealsapp/providers/filter_provider.dart';
-import 'package:mealsapp/screens/tabscreen.dart';
 import 'package:mealsapp/widgets/main_drawer.dart';
 
 class FiltersScreen extends ConsumerWidget {
@@ -12,13 +11,7 @@ class FiltersScreen extends ConsumerWidget {
     final activeFilters = ref.watch(filterProvider);
     return Scaffold(
       appBar: AppBar(title: const Text('Your Filters')),
-      drawer: MainDrawer(onSelectScreen: (identifier) {
-        Navigator.of(context).pop();
-        if (identifier == 'meals') {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctx) => const TabScreen()));
-        }
-      }),
+      drawer: const MainDrawer(),
       body: Column(
         children: [
           SwitchListTile(

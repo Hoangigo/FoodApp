@@ -33,3 +33,13 @@ final mealsStreamProvider = StreamProvider.autoDispose<List<Meal>>((ref) {
     }).toList();
   });
 });
+
+class SelectedMeal extends StateNotifier<Meal?> {
+  SelectedMeal() : super(null);
+  void setMeal(Meal meal) {
+    state = meal;
+  }
+}
+
+final selectedMealProvider =
+    StateNotifierProvider<SelectedMeal, Meal?>((ref) => SelectedMeal());

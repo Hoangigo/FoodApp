@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mealsapp/models/meal.dart';
+import 'package:mealsapp/providers/mealsprovider.dart';
+import 'package:mealsapp/screens/meal_details_screen.dart';
 import 'package:mealsapp/widgets/meal_item_traits.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal, required this.onSelectMeal});
+class MealItem extends ConsumerWidget {
+  const MealItem({super.key, required this.meal});
   final Meal meal;
-  final Function(Meal meal) onSelectMeal;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       margin: const EdgeInsets.all(8),
       shape: RoundedRectangleBorder(
@@ -19,7 +21,14 @@ class MealItem extends StatelessWidget {
       elevation: 2,
       child: InkWell(
         onTap: () {
-          onSelectMeal(meal);
+          ref.read(selectedMealProvider.notifier).setMeal(meal);
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => MealDetailsScreen(
+                meal: meal,
+              ),
+            ),
+          );
         },
         child: Stack(
           children: [
