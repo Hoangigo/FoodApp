@@ -1,12 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mealsapp/controller/auth_controller.dart';
-import 'package:mealsapp/models/login_user.dart';
-import 'package:mealsapp/models/meal.dart';
-import 'package:mealsapp/providers/filter_provider.dart';
-import 'package:mealsapp/screens/categoriesscreen.dart';
-import 'package:mealsapp/screens/chat.dart';
-import 'package:mealsapp/screens/mealscreen.dart';
+import 'package:mealsapp/features/authentication/domain/entities/login_user.dart';
+import 'package:mealsapp/features/categories/domain/entities/meal_entity.dart';
+import 'package:mealsapp/features/categories/presentation/pages/category.dart';
+import 'package:mealsapp/features/categories/presentation/providers/filter_provider.dart';
+import 'package:mealsapp/features/categories/presentation/widgets/meal.dart';
+import 'package:mealsapp/features/chat/presentation/pages/chat.dart';
 import 'package:mealsapp/widgets/main_drawer.dart';
 
 class TabsWidget extends StatelessWidget {
@@ -86,7 +86,7 @@ class TabsWidget extends StatelessWidget {
       ),
       IconButton(
         onPressed: () {
-          AuthController().signOut();
+          FirebaseAuth.instance.signOut();
         },
         icon: const Icon(Icons.exit_to_app),
       ),

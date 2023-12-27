@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mealsapp/providers/filter_provider.dart';
-import 'package:mealsapp/providers/userProvider.dart';
-import 'package:mealsapp/screens/chat.dart';
-import 'package:mealsapp/screens/filter.dart';
+import 'package:mealsapp/features/categories/presentation/providers/filter_provider.dart';
+import 'package:mealsapp/features/chat/presentation/pages/chat.dart';
+import 'package:mealsapp/features/categories/presentation/pages/filter.dart';
 import 'package:mealsapp/screens/tabscreen.dart';
+
+import '../features/authentication/presentation/providers/userProvider.dart';
 
 class MainDrawer extends ConsumerWidget {
   const MainDrawer({super.key});

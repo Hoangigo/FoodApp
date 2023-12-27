@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mealsapp/features/authentication/presentation/providers/userProvider.dart';
+import 'package:mealsapp/features/categories/presentation/providers/favorite_meal_provider.dart';
 
-import 'package:mealsapp/screens/chat.dart';
-import 'package:mealsapp/providers/favorite_meals_provider.dart';
-import 'package:mealsapp/providers/filter_provider.dart';
-import 'package:mealsapp/providers/mealsprovider.dart';
-import 'package:mealsapp/providers/userProvider.dart';
-import 'package:mealsapp/screens/filter.dart';
+import 'package:mealsapp/features/categories/presentation/providers/filter_provider.dart';
+import 'package:mealsapp/features/categories/presentation/providers/meal_provider.dart';
 import 'package:mealsapp/widgets/tabs.dart';
 
 class TabScreen extends ConsumerStatefulWidget {
@@ -24,19 +22,6 @@ class _TabScreen extends ConsumerState<TabScreen> {
     setState(() {
       index = newIndex;
     });
-  }
-
-  void setScreen(String identifier) async {
-    Navigator.of(context).pop();
-    if (identifier == 'filters') {
-      await Navigator.of(context).push<Map<Filter, bool>>(
-          MaterialPageRoute(builder: (ctx) => const FiltersScreen()));
-    } else if (identifier == 'messages') {
-      await Navigator.of(context).push(MaterialPageRoute(
-          builder: (ctx) => const ChatScreen(
-                title: 'Messages',
-              )));
-    }
   }
 
   @override
