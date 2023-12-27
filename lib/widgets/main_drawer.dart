@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mealsapp/features/categories/presentation/providers/filter_provider.dart';
 import 'package:mealsapp/features/chat/presentation/pages/chat.dart';
 import 'package:mealsapp/features/categories/presentation/pages/filter.dart';
-import 'package:mealsapp/screens/tabscreen.dart';
+import 'package:mealsapp/screens/tab.dart';
 
 import '../features/authentication/presentation/providers/userProvider.dart';
 

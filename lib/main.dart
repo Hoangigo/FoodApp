@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mealsapp/features/authentication/presentation/pages/authentication.dart';
 import 'package:mealsapp/screens/splash.dart';
-import 'package:mealsapp/screens/tabscreen.dart';
+import 'package:mealsapp/screens/tab.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'config/firebase_options.dart';
